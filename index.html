@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de Investigación Cualitativa - Innovación de Jabones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .process-flow::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.3) 100%);
+        }
+
+        .phase {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: slideInLeft 0.6s ease;
+            animation-fill-mode: both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .phase:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .phase::before {
+            content: attr(data-number);
+            position: absolute;
+            left: -45px;
+            top: 25px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .phase:nth-child(1) { animation-delay: 0.1s; }
+        .phase:nth-child(2) { animation-delay: 0.2s; }
+        .phase:nth-child(3) { animation-delay: 0.3s; }
+        .phase:nth-child(4) { animation-delay: 0.4s; }
+        .phase:nth-child(5) { animation-delay: 0.5s; }
+        .phase:nth-child(6) { animation-delay: 0.6s; }
+        .phase:nth-child(7) { animation-delay: 0.7s; }
+        .phase:nth-child(8) { animation-delay: 0.8s; }
+
+        .phase-title {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .phase-content {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .activities {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .activities li {
+            margin-bottom: 8px;
+            position: relative;
+            list-style: none;
+            padding-left: 25px;
+        }
+
+        .activities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .tools {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tool-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .process-flow {
+                padding-left: 40px;
+            }
+            
+            .phase::before {
+                left: -35px;
+                width: 30px;
+                height: 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧼 Proceso de Investigación Cualitativa</h1>
+            <p>Innovación en Jabones Artesanales para Hoteles - Caso Carlos Osorio</p>
+        </div>
+
+        <div class="process-flow">
+            <div class="phase" data-number="1">
+                <div class="phase-title">
+                    <div class="phase-icon">🎯</div>
+                    Definición del Problema
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Identificar la necesidad de innovación en el mercado de jabones hoteleros</p>
+                    <ul class="activities">
+                        <li>Analizar la situación actual: todos los hoteles usan jabones genéricos que causan alergias</li>
+                        <li>Identificar la oportunidad: 80% del mercado controlado por una sola empresa</li>
+                        <li>Reconocer recursos disponibles: plantas medicinales y aromáticas locales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase" data-number="2">
+                <div class="phase-title">
+                    <div class="phase-icon">📚</div>
+                    Revisión de Literatura
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Fundamentar teóricamente la investigación</p>
+                    <ul class="activities">
+                        <li>Investigar propiedades de plantas medicinales locales (lavanda, romero, coco)</li>
+                        <li>Estudiar tendencias en productos de higiene personal eco-amigables</li>
+                        <li>Analizar casos de éxito en innovación de amenities hoteleros</li>
+                        <li>Revisar normativas sanitarias para productos cosméticos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase" data-number="3">
+                <div class="phase-title">
+                    <div class="phase-icon">🎨</div>
+                    Diseño Metodológico
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Establecer el enfoque y métodos de investigación</p>
+                    <ul class="activities">
+                        <li>Enfoque: <span class="highlight">Investigación cualitativa exploratoria</span></li>
+                        <li>Método: Estudio de caso múltiple con enfoque fenomenológico</li>
+                        <li>Técnicas: Entrevistas, observación participante, grupos focales</li>
+                        <li>Muestra: Huéspedes, personal hotelero, proveedores locales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase" data-number="4">
+                <div class="phase-title">
+                    <div class="phase-icon">🔍</div>
+                    Recolección de Datos
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Obtener información rica y contextualizada</p>
+                    <ul class="activities">
+                        <li><strong>Entrevistas en profundidad:</strong> Con huéspedes sobre preferencias y experiencias</li>
+                        <li><strong>Observación participante:</strong> En hoteles para identificar patrones de uso</li>
+                        <li><strong>Grupos focales:</strong> Con personal de limpieza y recepción</li>
+                        <li><strong>Análisis sensorial:</strong> Pruebas con diferentes combinaciones de ingredientes</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Grabadora</span>
+                        <span class="tool-tag">Diario de campo</span>
+                        <span class="tool-tag">Guías de entrevista</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase" data-number="5">
+                <div class="phase-title">
+                    <div class="phase-icon">📊</div>
+                    Análisis de Datos
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Interpretar y dar sentido a la información recolectada</p>
+                    <ul class="activities">
+                        <li><strong>Codificación abierta:</strong> Identificar categorías emergentes</li>
+                        <li><strong>Análisis temático:</strong> Agrupar experiencias y preferencias comunes</li>
+                        <li><strong>Triangulación:</strong> Contrastar datos de diferentes fuentes</li>
+                        <li><strong>Matriz DOFA:</strong> Evaluar viabilidad de propuestas</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Atlas.ti</span>
+                        <span class="tool-tag">NVivo</span>
+                        <span class="tool-tag">Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase" data-number="6">
+                <div class="phase-title">
+                    <div class="phase-icon">💡</div>
+                    Desarrollo de Prototipos
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Crear soluciones innovadoras basadas en hallazgos</p>
+                    <ul class="activities">
+                        <li>Formular 3-5 variantes de jabones con ingredientes locales</li>
+                        <li>Diseñar empaque eco-amigable y diferenciador</li>
+                        <li>Crear narrativa de marca vinculada al territorio</li>
+                        <li>Establecer proceso de producción artesanal escalable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase" data-number="7">
+                <div class="phase-title">
+                    <div class="phase-icon">✅</div>
+                    Validación
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Confirmar la aceptación y viabilidad de las propuestas</p>
+                    <ul class="activities">
+                        <li>Pruebas piloto en hoteles seleccionados</li>
+                        <li>Retroalimentación de usuarios finales</li>
+                        <li>Análisis de costos y rentabilidad</li>
+                        <li>Ajustes basados en feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase" data-number="8">
+                <div class="phase-title">
+                    <div class="phase-icon">📝</div>
+                    Conclusiones y Recomendaciones
+                </div>
+                <div class="phase-content">
+                    <p><strong>Objetivo:</strong> Sintetizar aprendizajes y proponer plan de acción</p>
+                    <ul class="activities">
+                        <li>Documentar el proceso de innovación</li>
+                        <li>Establecer modelo de negocio sostenible</li>
+                        <li>Crear guía de implementación y escalamiento</li>
+                        <li>Proponer alianzas estratégicas con productores locales</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Canvas</span>
+                        <span class="tool-tag">Piktochart</span>
+                        <span class="tool-tag">Visme</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
